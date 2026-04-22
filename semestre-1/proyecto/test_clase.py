@@ -1,7 +1,28 @@
-from model.car import Car
+from controller import modificar_celda, operar_celda
+def matriz(filas, columnas):
+    matriz = []
+    for i in range(filas):
+        fila = []
+        for j in range(columnas):
+            fila.append(0)
+        matriz.append(fila)
+    return matriz
 
-# Instancia 1 o Objeto 1 o Carro 1
-objeto1 = Car(id=1, color="red", brand="Toyota", no_doors=4)
+tabla = matriz(10, 10)
 
-print(objeto1.brand)
-print(objeto1)
+while True:
+    for fila in tabla:
+        print(fila)
+
+    opcion = input("\nEscriba 'modificar' para cambiar una celda, 'operar' para sumar/restar, o 'salir': ")
+
+    if opcion.lower() == 'salir':
+        break
+
+    # --- MODIFICAR UNA CELDA ---
+    if opcion.lower() == 'modificar':
+        modificar_celda(tabla)
+
+    # --- OPERAR ENTRE DOS CELDAS ---
+    elif opcion.lower() == 'operar':
+        operar_celda(tabla)
